@@ -1,0 +1,7 @@
+time,download_Mbps,upload_Mbps,ping_ms,server,server_location,server_country,ip
+2025-11-18 20:11:53,143.87,40.86,16.66,Wingo AG,Zurich,Switzerland,169.150.197.204
+2025-11-18 20:13:08,145.51,40.79,17.31,Sunrise Communication AG,Zurich,Switzerland,169.150.197.204
+2025-11-18 20:14:21,147.65,40.68,16.3,Netrics Zürich AG,Zürich,Switzerland,169.150.197.204
+2025-11-18 20:15:34,148.55,40.86,16.0,Netrics Zürich AG,Zürich,Switzerland,169.150.197.204
+2025-11-18 20:16:46,143.69,40.75,16.79,Michael Stapelberg,Zürich,Switzerland,169.150.197.204
+2025-11-18 20:18:00,148.13,40.75,16.04,Netrics Zürich AG,Zürich,Switzerland,169.150.197.204
