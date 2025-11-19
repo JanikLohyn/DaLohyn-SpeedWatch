@@ -1,12 +1,33 @@
-# --- Python ---
+# =============================================================================
+# DaLohyn-SpeedWatch .gitignore
+# =============================================================================
 
+# --- SpeedWatch Spezifisch ---
+# CSV-Logs (enthalten persönliche Daten)
+Speedtest_log.csv
+speedtest_log.csv
+*.csv
+
+# Generierte Grafiken (individuell pro User)
+graphs/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Konfigurationsdateien mit sensiblen Daten
+config.ini
+secrets.json
+.env
+.envrc
+
+# --- Python ---
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[codz]
+*.py[cod]
 *$py.class
 *.pyc
 *.pyo
-
 
 # C extensions
 *.so
@@ -58,18 +79,10 @@ cover/
 *.mo
 *.pot
 
-# Django stuff:
+# Logs
 *.log
+logs/
 local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
 
 # Sphinx documentation
 docs/_build/
@@ -89,72 +102,101 @@ ipython_config.py
 .python-version
 
 # Virtual environments
-.env
-.envrc
-.venv
-env/
 venv/
+env/
 ENV/
+.venv
 env.bak/
 venv.bak/
 
-# IDEs and editors
-.idea/
-.vscode/
-
-# Other python related
-.pdm-python
-.pdm-build/
-.pyre/
+# Type checking
 .mypy_cache/
 .dmypy.json
 dmypy.json
 .pytype/
+.pyre/
 .ruff_cache/
 
-# --- Node.js / Svelte ---
+# --- IDEs und Editoren ---
+# VS Code
+.vscode/
+*.code-workspace
 
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# --- Betriebssysteme ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# --- Temporäre Dateien ---
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+.cache/
+
+# --- Node.js / Svelte (falls später erweitert) ---
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.npm
+.yarn-integrity
 
-# SvelteKit
+# SvelteKit (falls Web-Interface kommt)
 .svelte-kit/
 public/build/
 
 # Vite cache
-node_modules/.vite
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Optional npm cache directory
-.npm
-
-# Yarn Integrity file
-.yarn-integrity
-
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# VS Code workspace storage
-.vscode/
-
-# MacOS
-.DS_Store
-
-# Windows
-Thumbs.db
-
-#Speedtest_log.csv
-Speedtest_log.csv
-speedtest_log.csv
+.vite/
