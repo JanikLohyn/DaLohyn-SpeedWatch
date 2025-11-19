@@ -1,9 +1,17 @@
+"""
+E-Mail-Alert-System für DaLohyn-SpeedWatch
+Sendet E-Mail-Benachrichtigungen bei langsamer Verbindung
+"""
+
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 
+
 class EmailAlert:
+    """Verwaltet E-Mail-Benachrichtigungen"""
+    
     def __init__(self, smtp_server, smtp_port, email_from, email_password, email_to):
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
@@ -12,7 +20,18 @@ class EmailAlert:
         self.email_to = email_to
     
     def send_alert(self, avg_speed, measurements, threshold, num_measurements):
-        """Sendet eine E-Mail-Warnung bei langsamer Verbindung"""
+        """
+        Sendet eine E-Mail-Warnung bei langsamer Verbindung
+        
+        Args:
+            avg_speed: Durchschnittsgeschwindigkeit
+            measurements: Liste der letzten Messungen
+            threshold: Grenzwert
+            num_measurements: Anzahl der Messungen
+            
+        Returns:
+            True bei Erfolg, False bei Fehler
+        """
         try:
             msg = MIMEMultipart()
             msg['From'] = self.email_from
@@ -44,5 +63,5 @@ Details der letzten Messungen:
             print("✉️  Warn-E-Mail erfolgreich gesendet!")
             return True
         except Exception as e:
-            print(f"Fehler beim E-Mail-Versand: {e}")
+            print(f"❌ Fehler beim E-Mail-Versand: {e}")
             return False
