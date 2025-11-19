@@ -47,7 +47,7 @@ class SpeedtestRunner:
                 'server_country': data['server']['country'],
                 'ip': data['interface']['externalIp'],
                 'packet_loss': data.get('packetLoss', 0),
-            }
+            }  # <-- DIESE KLAMMER HAT GEFEHLT!
             
             return self.last_result
             
