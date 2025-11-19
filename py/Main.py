@@ -362,17 +362,17 @@ def api_generate_graphs():
 def api_list_graphs():
     graphs = []
     graph_files = {
-        'speed_over_time.png': ('Geschwindigkeit über Zeit', '/graphs/speed-over-time'),
-        'ping_over_time.png': ('Ping über Zeit', '/graphs/ping-over-time'),
-        'statistics.png': ('Statistik-Übersicht', '/graphs/statistics')
+        'speed_over_time.png': 'Geschwindigkeit über Zeit',
+        'ping_over_time.png': 'Ping über Zeit',
+        'statistics.png': 'Statistik-Übersicht'
     }
-    for filename, (name, url) in graph_files.items():
+    for filename, name in graph_files.items():
         graph_path = get_graph_path(filename)
         if os.path.exists(graph_path):
             graphs.append({
                 'name': name,
                 'filename': filename,
-                'url': url
+                'url': f'/graphs/{filename.replace(".png", "").replace("_", "-")}'
             })
     return jsonify({'graphs': graphs})
 
@@ -518,21 +518,6 @@ try:
 
 except KeyboardInterrupt:
     print("\n\n🛑 Programm durch Benutzer beendet (Ctrl+C)")
-    print(f"📊 Insgesamt {test_count} Tests durchgeführt")
-    print("💾 Alle Daten wurden in der CSV-Datei gespeichert")
-    
-    # Finale Grafik-Aktualisierung
-    if test_count > 0:
-        print("\n📊 Erstelle finale Grafiken...")
-        update_graphs()
-    
-    print("\n👋 Auf Wiedersehen!")
-    sys.exit(0)
-
-except Exception as e:
-    print(f"\n❌ Unerwarteter Fehler: {e}")
-    print("💾 Bisherige Daten wurden in der CSV-Datei gespeichert")
-    sys.exit(1)
     print(f"📊 Insgesamt {test_count} Tests durchgeführt")
     print("💾 Alle Daten wurden in der CSV-Datei gespeichert")
     
