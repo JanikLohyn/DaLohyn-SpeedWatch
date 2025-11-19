@@ -343,6 +343,21 @@ def api_graph_statistics():
         return send_file(graph_path, mimetype='image/png')
     return jsonify({'error': 'Grafik nicht verfügbar'}), 404
 
+@app.route('/graphs/generate', methods=['POST'])
+def api_generate_graphs():
+    """Generiert alle Grafiken neu (Thread-safe)"""
+    try:
+        print("🔄 API-Request: Generiere Grafiken...")
+        success = update_graphs()
+        if success:
+            return jsonify({'status': 'success', 'message': 'Grafiken wurden aktualisiert'})
+        else:
+            return jsonify({'status': 'error', 'message': 'Grafiken konnten nicht erstellt werden'}), 500
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/graphs/list', methods=['GET'])
 def api_list_graphs():
     graphs = []
