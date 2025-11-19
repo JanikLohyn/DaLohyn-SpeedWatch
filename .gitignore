@@ -4,6 +4,9 @@
 __pycache__/
 *.py[codz]
 *$py.class
+*.pyc
+*.pyo
+
 
 # C extensions
 *.so
@@ -151,3 +154,7 @@ pnpm-debug.log*
 
 # Windows
 Thumbs.db
+
+#Speedtest_log.csv
+Speedtest_log.csv
+speedtest_log.csv
