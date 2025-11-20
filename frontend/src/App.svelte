@@ -192,11 +192,11 @@
         {/if}
       </div>
 
-      <nav class="nav">
+      <div class="nav">
         <button onclick={() => navigate('statistics')}>📊 Alle Messungen</button>
         <button onclick={() => navigate('graphs')}>📈 Grafiken</button>
         <button onclick={exportCSV}>💾 CSV Download</button>
-      </nav>
+      </div>
     </div>
 
   {:else if currentPage === 'statistics'}

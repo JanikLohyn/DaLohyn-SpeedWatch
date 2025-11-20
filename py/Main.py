@@ -164,11 +164,14 @@ def check_speed_threshold(download_speed):
             print(f"⚠️  WARNUNG: Durchschnitt der letzten {MEASUREMENTS_TO_CHECK} Messungen "
                   f"liegt bei {avg_speed:.2f} Mbps (unter {THRESHOLD_MBPS} Mbps)!")
             
+            # macOS Benachrichtigung
             try:
                 mac_notifier.send_speed_alert(avg_speed, THRESHOLD_MBPS, recent_downloads.copy())
             except Exception:
                 pass
             
+            
+            # E-Mail
             if email_alert is not None:
                 email_alert.send_alert(avg_speed, recent_downloads.copy(), 
                                       THRESHOLD_MBPS, MEASUREMENTS_TO_CHECK)
@@ -194,14 +197,21 @@ def update_graphs():
 # ============================================================================
 @app.route('/measurements', methods=['GET'])
 def api_get_measurements():
-    limit = int(request.args.get('limit', 50))
+    limit = request.args.get('limit', default=None, type=int)
     measurements = []
     
     if os.path.exists(CSV_FILE):
         try:
             with open(CSV_FILE, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
-                measurements = list(reader)[-limit:]
+                all_measurements = list(reader)
+                
+                # Wenn limit angegeben, limitiere die Anzahl
+                if limit:
+                    measurements = all_measurements[-limit:]
+                else:
+                    measurements = all_measurements
+                
                 measurements.reverse()
         except Exception as e:
             print(f"❌ Fehler beim Lesen der CSV: {e}")
